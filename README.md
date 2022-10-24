@@ -56,7 +56,7 @@ rmats                                                latest    0ca8aaf01be0   16
 Now we re-tag it for pushing to our own personal [CAVATICA](cavatica.sbgenomics.com) docker container registry.
 
 ```bash
-docker tag 0ca8aaf01be0 pgc-images.sbgenomics.com/[YOUR CAVATICA USERID]/rmats/v4.1.2
+docker tag 0ca8aaf01be0 pgc-images.sbgenomics.com/[YOUR CAVATICA USERID]/rmats:v4.1.2
 ```
 
 ### Docker registry login
