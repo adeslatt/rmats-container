@@ -1,3 +1,4 @@
+[![Docker Image CI](https://github.com/adeslatt/rmats-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/adeslatt/rmats-docker/actions/workflows/docker-image.yml)
 # rmats-docker
 Build a Container for rmats from bioconda
 
