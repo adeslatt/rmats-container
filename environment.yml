@@ -3,4 +3,4 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - rmats=v4.1.2
+  - rmats

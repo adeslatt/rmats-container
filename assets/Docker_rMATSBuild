@@ -1,0 +1,75 @@
+# Full contents of Dockerfile
+FROM ubuntu
+LABEL description="Base docker image with conda and util libraries"
+ARG ENV_NAME="rmats"
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+#    apt-get add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt-get install -y --no-install-recommends && \
+    apt-get install -y software-properties-common && \
+    apt-get install -y gcc && \
+    apt-get install -y python3.6 && \
+    apt-get install -y python3-distutils && \
+    apt-get install -y python3-pip && \
+    apt-get install -y python3-apt && \
+    apt-get install -y build-essential && \
+    apt-get install -y python3-dev && \
+    apt-get install -y ca-certificates && \
+    apt-get install -y cmake && \
+    apt-get install -y curl && \
+    apt-get install -y g++ && \
+    apt-get install -y gfortran && \
+    apt-get install -y git && \
+    apt-get install -y libblas-dev && \
+    apt-get install -y libgsl-dev && \
+    apt-get install -y liblapack-dev && \
+    apt-get install -y r-base &&\
+    apt-get install -y r-cran-nloptr &&\
+    apt-get install -y zlib1g-dev  &&\
+    
+    rm -rf /var/lib/apt/lists/* && \
+
+#    # Now use a build dir to be removed after artifacts are extracted
+    mkdir /rmats_build &&\
+#    alias python python3 &&\
+    cd /rmats_build &&\
+    git clone https://github.com/Xinglab/rmats-turbo.git &&\
+    cd rmats-turbo 
+    
+    # The build will source setup_environment.sh which will source ~/.bashrc.
+    # Skip that by truncating setup_environment.sh
+    
+#    echo '' > setup_environment.sh &&\
+#    ./build_rmats &&\
+    
+    # Copy the build results
+#   mkdir /rmats &&\
+#    cd /rmats &&\
+#    cp /rmats_build/rmats-turbo/rmats.py ./ &&\
+#    cp /rmats_build/rmats-turbo/cp_with_prefix.py ./ &&\
+#    cp /rmats_build/rmats-turbo/*.so ./ &&\
+#    mkdir rMATS_C &&\
+#    cp /rmats_build/rmats-turbo/rMATS_C/rMATSexe ./rMATS_C &&\
+#    mkdir rMATS_P &&\
+#    cp /rmats_build/rmats-turbo/rMATS_P/*.py ./rMATS_P &&\
+#    mkdir rMATS_R &&\
+#    cp /rmats_build/rmats-turbo/rMATS_R/*.R ./rMATS_R &&\
+    
+    # Remove build dir
+#    rm -rf /rmats_build &&\
+    
+    # Build STAR
+#    mkdir /star_build &&\
+#    cd /star_build &&\
+#    curl -L -O https://github.com/alexdobin/STAR/archive/refs/tags/2.7.9a.tar.gz &&\
+#    tar -xvf 2.7.9a.tar.gz &&\
+#    cd STAR-2.7.9a/source &&\
+#    make STAR &&\
+#    cp STAR /usr/local/bin
+
+# Set defaults for running the image
+#WORKDIR /rmats
+#ENTRYPOINT ["python3", "/rmats/rmats.py"]
+#CMD ["--help"]
