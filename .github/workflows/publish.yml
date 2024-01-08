@@ -1,0 +1,18 @@
+name: publish
+on: [push]
+jobs:
+publish-rmats-docker-image:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- name: Login to GitHub Container Registry
+uses: docker/login-action@v1
+with:
+registry: ghcr.io
+username: ${{ github.actor }}
+password: ${{ secrets.GITHUB_TOKEN }}
+- name: Build the rMATS Docker image
+run: |
+       docker build . --tag ghcr.io/adeslatt/rmats-docker-gcr:latest
+       docker run ghcr.io/adeslatt/rmats-docker-gcr:latest
+       docker push ghcr.io/adeslatt/rmats-docker-gcr:latest
